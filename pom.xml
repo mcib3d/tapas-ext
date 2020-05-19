@@ -2,9 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>mcib3d</groupId>
     <artifactId>tapas-ext</artifactId>
     <packaging>pom</packaging>
@@ -21,48 +19,27 @@
             </plugin>
         </plugins>
     </build>
-
-
     <dependencies>
         <dependency>
-            <groupId>mcib3d</groupId>
+            <groupId>com.github.mcib3d</groupId>
             <artifactId>tapas-core</artifactId>
             <version>0.5</version>
             <scope>system</scope>
-            <!-- change the path -->
-            <systemPath>/home/thomas/App/ImageJ/plugins/3D/tapas_core.jar</systemPath>
-            <!-- change the path -->
         </dependency>
-
         <dependency>
             <groupId>net.haesleinhuepf</groupId>
             <artifactId>clij2_</artifactId>
             <version>0.26.5</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.github.mcib3d</groupId>
-            <artifactId>mcib3d-core</artifactId>
-            <version>3.96</version>
-        </dependency>
-
-        <dependency>
-            <groupId>omero</groupId>
-            <artifactId>blitz</artifactId>
-            <version>5.4.10-ice36-b105</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>1.8.0.10</version>
-        </dependency>
     </dependencies>
-
     <repositories>
         <repository>
             <id>clij</id>
             <url>http://dl.bintray.com/haesleinhuepf/clij</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
-
 </project>
