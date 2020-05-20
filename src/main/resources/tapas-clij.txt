@@ -1,0 +1,9 @@
+// to be renamed as tapas.txt into ImageJ/Fiji folder
+// CLIJProcesss
+CLIJ_filters:mcib3d.tapas.ext.CLIJ.plugins.FilterProcess
+CLIJ_autoThreshold:mcib3d.tapas.ext.CLIJ.plugins.AutoThresholdProcess
+CLIJ_label:mcib3d.tapas.ext.CLIJ.plugins.LabellingProcess
+CLIJ_load:mcib3d.tapas.ext.CLIJ.plugins.LoadProcess
+CLIJ_save:mcib3d.tapas.ext.CLIJ.plugins.SaveProcess
+CLIJ_input:mcib3d.tapas.ext.CLIJ.plugins.InputProcess
+CLIJ_output:mcib3d.tapas.ext.CLIJ.plugins.OutputProcess

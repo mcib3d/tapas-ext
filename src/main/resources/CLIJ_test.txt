@@ -1,0 +1,26 @@
+// need to specify the processor
+processor:mcib3d.tapas.ext.CLIJ.core.TapasProcessorCLIJ
+// first process should be input 
+// to read image from OMERO 
+// or from file 
+process:CLIJ_input
+channel:1
+
+// 2D/3D filters with CLIJ
+process:CLIJ_filters
+radxy:2
+radz:1
+filter:median
+
+// Auto Thresholding with CLIJ
+process:CLIJ_autoThreshold
+method:otsu
+
+// Labelling diamond from CLIJ
+process:CLIJ_label
+
+process:CLIJ_output
+name:?name?-clijtest
+
+
+
