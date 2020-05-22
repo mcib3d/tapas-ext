@@ -1,5 +1,6 @@
 package mcib3d.tapas.ext.CLIJ.plugins;
 
+import ij.ImageJ;
 import ij.measure.ResultsTable;
 import mcib3d.tapas.core.ImageInfo;
 import mcib3d.tapas.ext.CLIJ.core.TapasProcessingCLIJ;
@@ -26,6 +27,7 @@ public class ParametricImageProcess implements TapasProcessingCLIJ {
         }
     }
 
+    @Override
     public boolean setParameter(String id, String value) {
         switch (id) {
             case MEASUREMENT: // test value
@@ -35,6 +37,7 @@ public class ParametricImageProcess implements TapasProcessingCLIJ {
         return false;
     }
 
+    @Override
     public ClearCLBuffer execute(ClearCLBuffer label_map) {
         // init CLIJ and create images
         CLIJ2 clij = CLIJ2.getInstance();
@@ -44,12 +47,16 @@ public class ParametricImageProcess implements TapasProcessingCLIJ {
         //       intensities of objects
         clij.statisticsOfBackgroundAndLabelledPixels(label_map, label_map, table);
 
+        //table.show("Results");
+
         String column_name = getParameter(MEASUREMENT);
         ClearCLBuffer column = clij.create(table.size(), 1, 1);
         clij.pushResultsTableColumn(column, table, column_name);
+        //clij.show(column, "column");
 
-        ClearCLBuffer parametric_image = clij.create(label_map);
-        clij.generateParametricImage(column, label_map, parametric_image);
+        ClearCLBuffer parametric_image = clij.create(label_map.getDimensions(), clij.Float);
+        //clij.generateParametricImage(column, label_map, parametric_image);
+        clij.replaceIntensities(label_map, column, parametric_image);
 
         column.close();
         label_map.close();
@@ -57,18 +64,37 @@ public class ParametricImageProcess implements TapasProcessingCLIJ {
         return parametric_image;
     }
 
+    public static void main(String[] args) {
+        new ImageJ();
+
+        CLIJ2 clij2 = CLIJ2.getInstance();
+        ClearCLBuffer input = clij2.pushString("" +
+                "0 0 0 0 0 0\n" +
+                "0 1 1 2 2 0\n" +
+                "0 1 1 0 0 0\n" +
+                "0 0 0 0 0 0");
+
+        ClearCLBuffer result = new ParametricImageProcess().execute(input);
+
+        clij2.show(result, "result");
+    }
+
+    @Override
     public String getName() {
         return "Generate parametric images with CLIJ";
     }
 
+    @Override
     public String[] getParameters() {
         return new String[]{MEASUREMENT};
     }
 
+    @Override
     public String getParameter(String id) {
         return parameters.get(id);
     }
 
+    @Override
     public void setCurrentImage(ImageInfo currentImage) {
         info = currentImage;
     }
