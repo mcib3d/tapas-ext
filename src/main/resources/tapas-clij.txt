@@ -7,3 +7,5 @@ CLIJ_load:mcib3d.tapas.ext.CLIJ.plugins.LoadProcess
 CLIJ_save:mcib3d.tapas.ext.CLIJ.plugins.SaveProcess
 CLIJ_input:mcib3d.tapas.ext.CLIJ.plugins.InputProcess
 CLIJ_output:mcib3d.tapas.ext.CLIJ.plugins.OutputProcess
+// new from Robert
+mcib3d.tapas.ext.CLIJ.plugins.ParametricImageProcess

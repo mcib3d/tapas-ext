@@ -43,7 +43,7 @@ public class LoadProcess implements TapasProcessingCLIJ {
         IJ.log("Loading " + dir2 + name2);
         ImagePlus plus = IJ.openImage(dir2 + name2);
         if (plus == null) {
-            IJ.log("Could not load image.");
+            IJ.log("Could not load image "+dir2+" "+name2);
             return null;
         }
 

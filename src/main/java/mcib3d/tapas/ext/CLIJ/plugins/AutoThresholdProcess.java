@@ -39,6 +39,7 @@ public class AutoThresholdProcess implements TapasProcessingCLIJ {
             clij.release(input);
             return outputCLBuffer;
         }
+        clij.release(input);
 
         return null;
     }
